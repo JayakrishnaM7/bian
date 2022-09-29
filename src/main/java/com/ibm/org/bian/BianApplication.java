@@ -11,7 +11,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @SpringBootApplication
 @ComponentScan(basePackages ="com.ibm.org.bian.*")
-//@EnableSwagger2
 public class BianApplication {
 
 	public static void main(String[] args) {
