@@ -1,6 +1,7 @@
 package com.ibm.org.bian.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,16 @@ public class FundtransferController {
 
 	@PostMapping("/sendpaymentmessage")
 	public String sendPaymentMessage() {
+		//TODO business logic 
+		return "hello";
+	}
+	@GetMapping("/getpositionKeeping/{positionkeepingid}")
+	public String getPositionkeepingdetails() {
+		//TODO business logic 
+		return "hello";
+	}
+	@GetMapping("regulatorycompliance/{regulatorycompliancecid}")
+	public String getregulatoryCompliance() {
 		//TODO business logic 
 		return "hello";
 	}

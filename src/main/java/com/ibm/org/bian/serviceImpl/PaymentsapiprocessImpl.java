@@ -9,13 +9,20 @@ import com.ibm.org.bian.model.RetrivePaymentRs;
 import com.ibm.org.bian.model.UpdatePaymentRq;
 import com.ibm.org.bian.model.UpdatePaymentRs;
 import com.ibm.org.bian.service.PaymentsapiprocessI;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import reactor.core.publisher.Mono;
 @Service
 public class PaymentsapiprocessImpl implements PaymentsapiprocessI {
 
 	@Override
+	@CircuitBreaker(name = "intpaymentProcess", fallbackMethod = "PaymentsapiprocessFallback")
 	public InitPaymentResponse intpaymentProcess(InitPaymentRequest initPaymentRequest) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public Mono<String> PaymentsapiprocessFallback(Throwable ex) {
+		return Mono.just("Paymentsapiprocess  is down ");
 	}
 
 	@Override
