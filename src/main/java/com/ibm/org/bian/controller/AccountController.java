@@ -1,10 +1,15 @@
 package com.ibm.org.bian.controller;
 
+import java.util.List;
+
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.org.bian.model.AccountRs;
 import com.ibm.org.bian.service.AccountI;
 
 @RestController
@@ -14,24 +19,25 @@ public class AccountController {
 	@Autowired
 	AccountI accountI;
 
-	@GetMapping("/balancecheck")
-	public String getAccountBalance(String accountId) {
+	@GetMapping("/balancecheck/{accountid}")
+	public List<AccountRs>  getAccountBalance(@PathParam("accountid") String accountId) {
 		//TODO business logic 
-		accountI.getbalance(accountId);
-		return "hello";
+		
+		//return new ResponseEntity<Mono<AccountRs>>(accountI.getbalance(accountId), HttpStatus.OK);
+		return accountI.getbalance(accountId);
 	}
 
-	@GetMapping("/checklimit")
-	public String checkAccountLimit(String accountId) {
+	@GetMapping("/checklimit/{accountid}")
+	public List<AccountRs> checkAccountLimit(@PathParam("accountid") String accountId) {
 		//TODO business logic 
 		accountI.checklimit(accountId);
-		return "hello";
+		return accountI.checklimit(accountId);
 	}
 
-	@GetMapping("/externalaccountrefdata")
-	public String getExternalAccountData() {
+	@GetMapping("/externalaccountrefdata/{accountid}")
+	public String getExternalAccountData(@PathParam("accountid") String accountId) {
 		//TODO business logic 
-		accountI.getExternalDetails();
+		accountI.getExternalDetails(accountId);
 		return "hello";
 	}
 }

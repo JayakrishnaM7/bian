@@ -38,4 +38,10 @@ public class AccountRs {
 	private String StatementTransactionType;
 	private String StatementPeriod;
 	private String StatementReport;
+	private String Optional1;
+	private String Optional2;
+	private String Optional3;
+	private String Optional4;
+	private String Optional5;
+;
 }
